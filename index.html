@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="theme-color" content="#0b1220" />
-  <title>Personal Finance App — Feature Concept</title>
+  <title>Finmate — Your money, your mate.</title>
   <style>
     :root{
       --bg:#0a0f1d;--surface:#111827;--surface-2:#172033;--surface-3:#1e293b;
@@ -45,7 +45,7 @@
     .goal{display:grid;gap:12px;margin-top:14px}.goal-row{display:flex;justify-content:space-between;gap:14px;padding:12px 0;border-bottom:1px solid var(--line)}.goal-row:last-child{border-bottom:0}
     .goal-value{font-weight:700}.debt-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
     .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.chip{border:1px solid var(--line);background:var(--surface-2);padding:8px 11px;border-radius:999px;color:#dbeafe;font-size:13px}
-    .roadmap{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.phase-num{font-size:12px;color:var(--primary);font-weight:700;margin-bottom:4px}
+    .roadmap{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.phase-num{font-size:12px;color:var(--primary);font-weight:700;margin-bottom:4px}
     details{margin-top:4px;border-top:1px solid var(--line);padding-top:10px}
     summary{cursor:pointer;color:#bae6fd;font-size:13px;font-weight:700;list-style:none;min-height:32px;display:flex;align-items:center}
     summary::-webkit-details-marker{display:none}
@@ -82,7 +82,7 @@
     .ai-priority .meta-row{font-size:13px}
     @media(max-width:640px){.ai-levels{grid-template-columns:1fr}}
     .footer{text-align:center;margin-top:30px;color:var(--muted);font-size:13px}
-    @media(max-width:900px){.overview{grid-template-columns:repeat(2,1fr)}.features{grid-template-columns:repeat(2,1fr)}.highlight-grid{grid-template-columns:1fr}}
+    @media(max-width:900px){.overview{grid-template-columns:repeat(2,1fr)}.features{grid-template-columns:repeat(2,1fr)}.highlight-grid{grid-template-columns:1fr}.roadmap{grid-template-columns:repeat(2,1fr)}}
     @media(max-width:900px){.chatbot{grid-template-columns:1fr}}\n    @media(max-width:640px){
       .page{padding:12px 12px 40px}.hero{padding:24px 18px;border-radius:22px}.hero-copy{font-size:15px}
       .overview,.features,.debt-grid,.roadmap{grid-template-columns:1fr}.stat,.feature,.panel,.phase,.debt-card{padding:16px}
@@ -93,9 +93,9 @@
 <body>
 <main class="page">
   <section class="hero">
-    <span class="eyebrow">PERSONAL FINANCE APP</span>
-    <h1>วางแผนเงินง่ายขึ้น เห็นภาพชัดขึ้น</h1>
-    <p class="hero-copy">หน้าแนวคิดนี้สรุปทั้งภาพรวมและรายละเอียดของแต่ละฟีเจอร์ เพื่อให้เห็นว่าแอปควรทำอะไร เก็บข้อมูลอะไร และช่วยผู้ใช้ตัดสินใจเรื่องเงินอย่างไร</p>
+    <span class="eyebrow">FINMATE · YOUR MONEY, YOUR MATE.</span>
+    <h1>Finmate — เพื่อนคู่ใจเรื่องการเงิน</h1>
+    <p class="hero-copy">Finmate ช่วยให้การจัดการเงินเป็นเรื่องง่าย ตั้งแต่บันทึกรายรับรายจ่าย วางงบและเป้าหมาย ไปจนถึง AI Financial Assistant ที่ช่วยตอบคำถามและวิเคราะห์ข้อมูลการเงินของคุณ</p>
   </section>
 
   <section class="section">
@@ -313,13 +313,15 @@
   <section class="section">
     <div class="section-head"><div class="section-kicker">Roadmap</div><h2>ทำทีละช่วง ไม่ให้ระบบใหญ่เกินไป</h2></div>
     <div class="roadmap">
-      <article class="phase"><div class="phase-num">PHASE 01</div><h3>พื้นฐาน</h3><p>รายรับ รายจ่าย บัญชี หมวดหมู่ Dashboard ประวัติ และโอนเงิน</p></article>
-      <article class="phase"><div class="phase-num">PHASE 02</div><h3>วางแผน</h3><p>Budget เป้าหมายออม รายการประจำ ปฏิทิน แจ้งเตือน และ AI Assistant เวอร์ชันแรก</p></article>
-      <article class="phase"><div class="phase-num">PHASE 03</div><h3>เติบโต</h3><p>ลงทุน ลูกหนี้ เจ้าหนี้ AI วิเคราะห์ขั้นสูง, Cloud Sync หลายสกุลเงิน และรายงานขั้นสูง</p></article>
+      <article class="phase"><div class="phase-num">PHASE 01 · MVP</div><h3>แกนหลัก</h3><p>รายรับ รายจ่าย หมวดหมู่ หลายบัญชี Dashboard งบประมาณ และสรุปรายเดือน เพื่อให้ใช้งานจริงได้เร็วที่สุด</p></article>
+      <article class="phase"><div class="phase-num">PHASE 02 · PLANNING</div><h3>วางแผนการเงิน</h3><p>เป้าหมายการออม ลูกหนี้ เจ้าหนี้ รายการประจำ ปฏิทินการเงิน และระบบแจ้งเตือน</p></article>
+      <article class="phase"><div class="phase-num">PHASE 03 · AI</div><h3>AI Financial Assistant</h3><p>Ask, Analyze และ Act: ถามข้อมูล สรุปพฤติกรรม เช็กงบ/หนี้ คำนวณเป้าหมาย และเตรียมรายการโดยให้ยืนยันก่อนบันทึก</p></article>
+      <article class="phase"><div class="phase-num">PHASE 04 · TRUST</div><h3>ภาษาและความปลอดภัย</h3><p>รองรับลาว ไทย อังกฤษ พร้อม Login, Backup/Restore, การปกป้องข้อมูล และสิทธิ์การเข้าถึงที่ชัดเจน</p></article>
+      <article class="phase"><div class="phase-num">PHASE 05 · RELEASE</div><h3>ทดสอบและเปิดตัว</h3><p>ทดสอบกับผู้ใช้จริง ปรับ Mobile UX แก้ปัญหาจาก feedback แล้วเตรียมเผยแพร่ Android และ iOS</p></article>
     </div>
   </section>
 
-  <div class="footer">Personal Finance App concept · Mobile-first · Feature details included</div>
+  <div class="footer">Finmate · Your money, your mate. · Mobile-first personal finance</div>
 </main>
 </body>
 </html>
