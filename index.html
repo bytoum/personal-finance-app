@@ -52,9 +52,31 @@
     summary:after{content:"＋";margin-left:auto;color:var(--muted);font-size:16px}
     details[open] summary:after{content:"−"}
     .detail-box{padding-top:8px;display:grid;gap:7px}
+    .chatbot{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:12px;
+      align-items:stretch;
+    }
+    .chat-window{
+      border:1px solid var(--line);
+      background:linear-gradient(180deg,#0f172a,#111827);
+      border-radius:20px;
+      padding:16px;
+    }
+    .bubble{
+      max-width:88%;
+      padding:10px 12px;
+      border-radius:14px;
+      font-size:14px;
+      margin-top:10px;
+    }
+    .bubble.user{margin-left:auto;background:#0c4a6e;color:#e0f2fe}
+    .bubble.bot{background:var(--surface-2);color:#dbeafe;border:1px solid var(--line)}
+    .chat-note{margin-top:12px;font-size:12px;color:var(--muted)}
     .footer{text-align:center;margin-top:30px;color:var(--muted);font-size:13px}
     @media(max-width:900px){.overview{grid-template-columns:repeat(2,1fr)}.features{grid-template-columns:repeat(2,1fr)}.highlight-grid{grid-template-columns:1fr}}
-    @media(max-width:640px){
+    @media(max-width:900px){.chatbot{grid-template-columns:1fr}}\n    @media(max-width:640px){
       .page{padding:12px 12px 40px}.hero{padding:24px 18px;border-radius:22px}.hero-copy{font-size:15px}
       .overview,.features,.debt-grid,.roadmap{grid-template-columns:1fr}.stat,.feature,.panel,.phase,.debt-card{padding:16px}
       h2{font-size:20px}
@@ -243,7 +265,7 @@
     <div class="roadmap">
       <article class="phase"><div class="phase-num">PHASE 01</div><h3>พื้นฐาน</h3><p>รายรับ รายจ่าย บัญชี หมวดหมู่ Dashboard ประวัติ และโอนเงิน</p></article>
       <article class="phase"><div class="phase-num">PHASE 02</div><h3>วางแผน</h3><p>Budget เป้าหมายออม รายการประจำ ปฏิทิน และแจ้งเตือน</p></article>
-      <article class="phase"><div class="phase-num">PHASE 03</div><h3>เติบโต</h3><p>ลงทุน ลูกหนี้ เจ้าหนี้ Cloud Sync หลายสกุลเงิน และรายงานขั้นสูง</p></article>
+      <article class="phase"><div class="phase-num">PHASE 03</div><h3>เติบโต</h3><p>ลงทุน ลูกหนี้ เจ้าหนี้ AI Financial Assistant, Cloud Sync หลายสกุลเงิน และรายงานขั้นสูง</p></article>
     </div>
   </section>
 
