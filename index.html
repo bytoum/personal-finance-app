@@ -3,89 +3,290 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#0b1220" />
   <title>Personal Finance App — Concept</title>
   <style>
-    :root{--bg:#0b1020;--panel:#121a2f;--card:#18223b;--text:#eef2ff;--muted:#a7b0c6;--line:#2a3553;--accent:#7dd3fc}
+    :root{
+      --bg:#0a0f1d;
+      --surface:#111827;
+      --surface-2:#172033;
+      --surface-3:#1e293b;
+      --text:#f8fafc;
+      --muted:#a8b3c7;
+      --line:#273449;
+      --primary:#38bdf8;
+      --primary-soft:#0c4a6e;
+      --green:#34d399;
+      --amber:#fbbf24;
+      --red:#fb7185;
+      --radius:20px;
+    }
     *{box-sizing:border-box}
-    body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans Thai",sans-serif;background:linear-gradient(180deg,#09101e,#0d1426);color:var(--text)}
-    .wrap{max-width:1100px;margin:auto;padding:28px 18px 56px}
-    .hero,.card{border:1px solid var(--line);background:var(--panel);border-radius:20px;padding:22px}
-    h1{font-size:clamp(30px,5vw,54px);margin:4px 0 12px;line-height:1.05}
-    h2{font-size:22px;margin:0 0 14px}
-    .kicker{color:var(--accent);font-weight:700}
-    .muted{color:var(--muted);line-height:1.7}
-    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-    .grid4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
-    .mini{background:var(--card)}
-    .section{margin-top:18px}
-    .tagrow{display:flex;flex-wrap:wrap;gap:9px}
-    .tag{border:1px solid var(--line);padding:9px 12px;border-radius:999px;background:#111a30}
-    .phase{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-    .label{font-weight:700;margin-bottom:6px}
-    ul{padding-left:20px} li{margin:7px 0;color:var(--muted)}
-    .footer{text-align:center;color:var(--muted);margin-top:28px;font-size:14px}
-    @media(max-width:760px){.grid,.grid4,.phase{grid-template-columns:1fr}.wrap{padding:16px 12px 40px}}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans Thai",sans-serif;
+      background:
+        radial-gradient(circle at top right,rgba(56,189,248,.10),transparent 34rem),
+        var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+    a{color:inherit}
+    .page{max-width:1120px;margin:0 auto;padding:20px 16px 56px}
+    .hero{
+      background:linear-gradient(145deg,rgba(17,24,39,.98),rgba(23,32,51,.96));
+      border:1px solid var(--line);
+      border-radius:28px;
+      padding:28px 22px;
+      overflow:hidden;
+      position:relative;
+    }
+    .hero:after{
+      content:"";
+      position:absolute;
+      width:220px;height:220px;border-radius:50%;
+      right:-80px;top:-90px;
+      background:rgba(56,189,248,.10);
+    }
+    .eyebrow{
+      display:inline-flex;
+      padding:7px 10px;
+      border:1px solid #20566f;
+      background:#0c2432;
+      color:#a5e4fb;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:.08em;
+    }
+    h1{
+      margin:16px 0 10px;
+      max-width:700px;
+      font-size:clamp(32px,8vw,58px);
+      line-height:1.05;
+      letter-spacing:-.03em;
+    }
+    h2{margin:0;font-size:22px}
+    h3{margin:0 0 6px;font-size:17px}
+    p{margin:0}
+    .muted{color:var(--muted)}
+    .hero-copy{max-width:720px;font-size:16px;color:#cbd5e1}
+    .section{margin-top:22px}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:12px}
+    .section-kicker{font-size:13px;color:var(--primary);font-weight:700;margin-bottom:3px}
+    .overview{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:12px;
+    }
+    .stat{
+      padding:18px;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:var(--surface);
+      min-width:0;
+    }
+    .icon{
+      width:42px;height:42px;border-radius:13px;
+      display:grid;place-items:center;
+      background:var(--surface-3);
+      margin-bottom:12px;
+      font-size:20px;
+    }
+    .stat p,.feature p,.panel p{font-size:14px;color:var(--muted)}
+    .features{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:12px;
+    }
+    .feature{
+      padding:18px;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:var(--surface);
+    }
+    .feature strong{display:block;margin-bottom:6px}
+    .highlight-grid{
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:12px;
+    }
+    .panel{
+      border:1px solid var(--line);
+      background:var(--surface);
+      border-radius:var(--radius);
+      padding:20px;
+    }
+    .budget-meter{margin:18px 0 8px}
+    .meter-top{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-bottom:8px}
+    .track{height:10px;border-radius:999px;background:#222e42;overflow:hidden}
+    .fill{height:100%;width:78%;border-radius:999px;background:linear-gradient(90deg,var(--primary),#22d3ee)}
+    .callout{
+      margin-top:14px;
+      border:1px solid #4c3b14;
+      background:#251d09;
+      color:#fde68a;
+      border-radius:14px;
+      padding:12px 14px;
+      font-size:14px;
+    }
+    .goal{
+      display:grid;
+      gap:12px;
+      margin-top:14px;
+    }
+    .goal-row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      padding:12px 0;
+      border-bottom:1px solid var(--line);
+    }
+    .goal-row:last-child{border-bottom:0}
+    .goal-name{font-size:14px}
+    .goal-value{font-weight:700;white-space:nowrap}
+    .debt-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .debt-card{
+      padding:18px;border-radius:18px;
+      background:var(--surface-2);
+      border:1px solid var(--line);
+    }
+    .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+    .chip{
+      border:1px solid var(--line);
+      background:var(--surface-2);
+      padding:8px 11px;
+      border-radius:999px;
+      color:#dbeafe;
+      font-size:13px;
+    }
+    .roadmap{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .phase{padding:18px;border-radius:18px;border:1px solid var(--line);background:var(--surface)}
+    .phase-num{font-size:12px;color:var(--primary);font-weight:700;margin-bottom:4px}
+    .footer{text-align:center;margin-top:30px;color:var(--muted);font-size:13px}
+
+    @media(max-width:900px){
+      .overview{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .features{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .highlight-grid{grid-template-columns:1fr}
+    }
+
+    @media(max-width:640px){
+      .page{padding:12px 12px 40px}
+      .hero{padding:24px 18px;border-radius:22px}
+      .hero-copy{font-size:15px}
+      .section{margin-top:18px}
+      .section-head{align-items:start}
+      .overview,.features,.debt-grid,.roadmap{grid-template-columns:1fr}
+      .stat,.feature,.panel,.phase{padding:16px}
+      .goal-row{align-items:flex-start}
+      h2{font-size:20px}
+      .icon{width:40px;height:40px}
+    }
   </style>
 </head>
 <body>
-<main class="wrap">
-  <section class="hero">
-    <div class="kicker">PERSONAL FINANCE APP</div>
-    <h1>จัดการเงินทั้งหมดในที่เดียว</h1>
-    <p class="muted">แอปการเงินส่วนบุคคลที่เริ่มจากรายรับ–รายจ่ายแบบง่าย ๆ และต่อยอดไปสู่การออม การลงทุน งบประมาณ หนี้ และการวางแผนทางการเงิน</p>
-  </section>
+  <main class="page">
+    <section class="hero">
+      <span class="eyebrow">PERSONAL FINANCE APP</span>
+      <h1>วางแผนเงินง่ายขึ้น เห็นภาพชัดขึ้น</h1>
+      <p class="hero-copy">แอปเดียวสำหรับรายรับ รายจ่าย งบประมาณ เงินออม การลงทุน และหนี้ ออกแบบให้เริ่มใช้ง่าย แล้วค่อยเติบโตเป็นระบบการเงินส่วนบุคคลแบบครบขึ้นในอนาคต</p>
+    </section>
 
-  <section class="section grid4">
-    <div class="card mini"><div class="label">💵 รายรับ</div><div class="muted">เงินเดือน งานเสริม ขายของ และรายได้อื่น ๆ</div></div>
-    <div class="card mini"><div class="label">🧾 รายจ่าย</div><div class="muted">ค่าใช้จ่ายประจำ รายวัน และหมวดที่ผู้ใช้สร้างเอง</div></div>
-    <div class="card mini"><div class="label">🎯 เงินออม</div><div class="muted">เป้าหมายออม เงินฉุกเฉิน ซื้อคอม โทรศัพท์ และท่องเที่ยว</div></div>
-    <div class="card mini"><div class="label">📈 การลงทุน</div><div class="muted">หุ้น กองทุน คริปโต ทอง อสังหา และทรัพย์สินอื่น</div></div>
-  </section>
+    <section class="section">
+      <div class="section-head">
+        <div><div class="section-kicker">ภาพรวม</div><h2>4 เสาหลักของระบบ</h2></div>
+      </div>
+      <div class="overview">
+        <article class="stat"><div class="icon">💵</div><h3>รายรับ</h3><p>เงินเดือน งานเสริม ขายของ และรายได้หลายช่องทาง</p></article>
+        <article class="stat"><div class="icon">🧾</div><h3>รายจ่าย</h3><p>ค่าใช้จ่ายประจำ รายวัน และหมวดที่เพิ่มเองได้</p></article>
+        <article class="stat"><div class="icon">🎯</div><h3>เงินออม</h3><p>เงินฉุกเฉิน เป้าหมายซื้อของ และเป้าหมายระยะยาว</p></article>
+        <article class="stat"><div class="icon">📈</div><h3>การลงทุน</h3><p>หุ้น กองทุน คริปโต ทอง และทรัพย์สินอื่น ๆ</p></article>
+      </div>
+    </section>
 
-  <section class="section card">
-    <h2>ฟีเจอร์หลัก</h2>
-    <div class="grid">
-      <div><div class="label">📊 Dashboard</div><div class="muted">ยอดคงเหลือ รายรับ รายจ่าย เงินออม การลงทุน และภาพรวมสุทธิ</div></div>
-      <div><div class="label">🏦 หลายบัญชี</div><div class="muted">เงินสด ธนาคาร Wallet บัตรเครดิต และบัญชีอื่น ๆ</div></div>
-      <div><div class="label">🔄 โอนเงิน</div><div class="muted">ย้ายเงินระหว่างบัญชีโดยไม่ถูกนับเป็นรายจ่าย</div></div>
-      <div><div class="label">🗂️ หมวดหมู่</div><div class="muted">เพิ่ม แก้ไข ซ่อน จัดลำดับ และสร้างหมวดย่อยเองได้</div></div>
-      <div><div class="label">🔁 รายการประจำ</div><div class="muted">เงินเดือน ค่าเช่า ค่าน้ำ ค่าไฟ อินเทอร์เน็ต และรายการซ้ำ</div></div>
-      <div><div class="label">📅 ปฏิทินการเงิน</div><div class="muted">วันเงินเข้า บิล หนี้ วันครบกำหนด และการแจ้งเตือน</div></div>
-    </div>
-  </section>
+    <section class="section">
+      <div class="section-head">
+        <div><div class="section-kicker">Core features</div><h2>สิ่งที่ควรมีตั้งแต่เวอร์ชันแรก</h2></div>
+      </div>
+      <div class="features">
+        <article class="feature"><h3>📊 Dashboard</h3><p>สรุปยอดคงเหลือ รายรับ รายจ่าย เงินออม และการลงทุนในหน้าเดียว</p></article>
+        <article class="feature"><h3>🏦 หลายบัญชี</h3><p>เงินสด ธนาคาร Wallet บัตรเครดิต และบัญชีประเภทอื่น</p></article>
+        <article class="feature"><h3>🔄 โอนเงิน</h3><p>ย้ายเงินระหว่างบัญชีโดยไม่ทำให้รายงานรายจ่ายผิด</p></article>
+        <article class="feature"><h3>🗂️ หมวดหมู่ยืดหยุ่น</h3><p>เพิ่ม แก้ไข ซ่อน จัดลำดับ และทำหมวดย่อยได้เอง</p></article>
+        <article class="feature"><h3>🔁 รายการประจำ</h3><p>เงินเดือน ค่าเช่า ค่าน้ำ ค่าไฟ อินเทอร์เน็ต และรายการซ้ำ</p></article>
+        <article class="feature"><h3>📅 ปฏิทินการเงิน</h3><p>รวมวันครบกำหนด บิล หนี้ และรายการที่ต้องเตือนไว้ด้วยกัน</p></article>
+      </div>
+    </section>
 
-  <section class="section grid">
-    <div class="card"><h2>💸 Budget & Alerts</h2><ul><li>ตั้งวงเงินรายวัน รายสัปดาห์ หรือรายเดือน</li><li>ตั้งงบแยกตามหมวด</li><li>เตือนเมื่อใช้ถึงระดับ เช่น 80%</li><li>เกินงบแล้วแสดงสถานะเตือน แต่ยังบันทึกได้</li></ul></div>
-    <div class="card"><h2>🎯 เป้าหมายการออม</h2><ul><li>ซื้อโทรศัพท์ / ซื้อคอม</li><li>ท่องเที่ยว</li><li>เงินฉุกเฉิน</li><li>ค่ารักษาพยาบาล</li><li>สร้างเป้าหมายเอง พร้อมเปอร์เซ็นต์ความคืบหน้า</li></ul></div>
-  </section>
+    <section class="section highlight-grid">
+      <article class="panel">
+        <div class="section-kicker">ควบคุมรายจ่าย</div>
+        <h2>Budget & Alerts</h2>
+        <p style="margin-top:8px">กำหนดงบรายวัน รายสัปดาห์ หรือรายเดือน และตั้งงบเฉพาะหมวดได้</p>
+        <div class="budget-meter">
+          <div class="meter-top"><span>ใช้ไป 78%</span><span>ใกล้ถึงงบ</span></div>
+          <div class="track"><div class="fill"></div></div>
+        </div>
+        <div class="callout">เมื่อใกล้ถึงงบ ระบบเตือนก่อน และถ้าเกินงบให้แสดงสถานะชัดเจนโดยไม่บล็อกการบันทึก</div>
+      </article>
 
-  <section class="section card">
-    <h2>🤝 ลูกหนี้และเจ้าหนี้</h2>
-    <div class="grid">
-      <div class="card mini"><div class="label">ลูกหนี้ — คนอื่นยืมเงินเรา</div><div class="muted">ชื่อผู้ยืม จำนวนเงิน วันครบกำหนด เตือนล่วงหน้า คืนบางส่วน และสถานะค้างชำระ</div></div>
-      <div class="card mini"><div class="label">เจ้าหนี้ — เรายืมเงินคนอื่น</div><div class="muted">บันทึกว่าเป็นหนี้ใคร จำนวนเท่าไร ต้องคืนเมื่อไร ชำระบางส่วน และแจ้งเตือนก่อนครบกำหนด</div></div>
-    </div>
-  </section>
+      <article class="panel">
+        <div class="section-kicker">เป้าหมาย</div>
+        <h2>เงินออม</h2>
+        <div class="goal">
+          <div class="goal-row"><span class="goal-name">💻 ซื้อคอม</span><span class="goal-value">65%</span></div>
+          <div class="goal-row"><span class="goal-name">🧳 ท่องเที่ยว</span><span class="goal-value">42%</span></div>
+          <div class="goal-row"><span class="goal-name">🛟 เงินฉุกเฉิน</span><span class="goal-value">80%</span></div>
+        </div>
+      </article>
+    </section>
 
-  <section class="section card">
-    <h2>📈 รายงานและการวิเคราะห์</h2>
-    <div class="tagrow"><span class="tag">รายวัน</span><span class="tag">รายเดือน</span><span class="tag">รายปี</span><span class="tag">แยกตามหมวด</span><span class="tag">รายรับเทียบรายจ่าย</span><span class="tag">อัตราการออม</span><span class="tag">พฤติกรรมการใช้เงิน</span></div>
-  </section>
+    <section class="section">
+      <div class="section-head">
+        <div><div class="section-kicker">หนี้</div><h2>ลูกหนี้และเจ้าหนี้</h2></div>
+      </div>
+      <div class="debt-grid">
+        <article class="debt-card"><h3>🤝 เงินที่คนอื่นยืมเรา</h3><p>เก็บชื่อ จำนวนเงิน วันครบกำหนด การคืนบางส่วน และแจ้งเตือนเมื่อเลยกำหนด</p></article>
+        <article class="debt-card"><h3>💳 เงินที่เรายืมคนอื่น</h3><p>ติดตามยอดคงเหลือ วันต้องจ่าย และสถานะชำระเพื่อช่วยลดการลืม</p></article>
+      </div>
+    </section>
 
-  <section class="section card">
-    <h2>ฟีเจอร์เสริมในอนาคต</h2>
-    <div class="tagrow"><span class="tag">หลายสกุลเงิน</span><span class="tag">Cloud Sync</span><span class="tag">Backup / Restore</span><span class="tag">Export CSV / Excel</span><span class="tag">แนบรูปใบเสร็จ</span><span class="tag">Quick Add</span><span class="tag">PIN / Biometrics</span><span class="tag">Dark Mode</span></div>
-  </section>
+    <section class="section panel">
+      <div class="section-kicker">รายงาน</div>
+      <h2>ดูพฤติกรรมการเงินได้หลายมุม</h2>
+      <div class="chips">
+        <span class="chip">รายวัน</span><span class="chip">รายเดือน</span><span class="chip">รายปี</span>
+        <span class="chip">แยกตามหมวด</span><span class="chip">รายรับเทียบรายจ่าย</span>
+        <span class="chip">อัตราการออม</span><span class="chip">หมวดที่ใช้มากที่สุด</span>
+      </div>
+    </section>
 
-  <section class="section card">
-    <h2>Roadmap</h2>
-    <div class="phase">
-      <div class="card mini"><div class="label">Phase 1</div><div class="muted">รายรับ รายจ่าย บัญชี หมวดหมู่ Dashboard และประวัติ</div></div>
-      <div class="card mini"><div class="label">Phase 2</div><div class="muted">Budget เป้าหมายออม รายการประจำ ปฏิทิน และแจ้งเตือน</div></div>
-      <div class="card mini"><div class="label">Phase 3</div><div class="muted">ลงทุน ลูกหนี้ เจ้าหนี้ Cloud Sync และรายงานขั้นสูง</div></div>
-    </div>
-  </section>
-  <div class="footer">Personal Finance App concept</div>
-</main>
+    <section class="section panel">
+      <div class="section-kicker">ต่อยอดภายหลัง</div>
+      <h2>ฟีเจอร์เสริม</h2>
+      <div class="chips">
+        <span class="chip">หลายสกุลเงิน</span><span class="chip">Cloud Sync</span>
+        <span class="chip">Backup / Restore</span><span class="chip">Export CSV / Excel</span>
+        <span class="chip">แนบรูปใบเสร็จ</span><span class="chip">Quick Add</span>
+        <span class="chip">PIN / Biometrics</span><span class="chip">Dark Mode</span>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div><div class="section-kicker">Roadmap</div><h2>ทำทีละช่วง ไม่ให้ระบบใหญ่เกินไป</h2></div>
+      </div>
+      <div class="roadmap">
+        <article class="phase"><div class="phase-num">PHASE 01</div><h3>พื้นฐาน</h3><p class="muted">รายรับ รายจ่าย บัญชี หมวดหมู่ Dashboard และประวัติ</p></article>
+        <article class="phase"><div class="phase-num">PHASE 02</div><h3>วางแผน</h3><p class="muted">Budget เป้าหมายออม รายการประจำ ปฏิทิน และแจ้งเตือน</p></article>
+        <article class="phase"><div class="phase-num">PHASE 03</div><h3>เติบโต</h3><p class="muted">ลงทุน ลูกหนี้ เจ้าหนี้ Cloud Sync และรายงานขั้นสูง</p></article>
+      </div>
+    </section>
+
+    <div class="footer">Personal Finance App concept · Responsive for mobile</div>
+  </main>
 </body>
 </html>
