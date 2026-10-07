@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Personal Finance App — Concept</title>
+  <style>
+    :root{--bg:#0b1020;--panel:#121a2f;--card:#18223b;--text:#eef2ff;--muted:#a7b0c6;--line:#2a3553;--accent:#7dd3fc}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans Thai",sans-serif;background:linear-gradient(180deg,#09101e,#0d1426);color:var(--text)}
+    .wrap{max-width:1100px;margin:auto;padding:28px 18px 56px}
+    .hero,.card{border:1px solid var(--line);background:var(--panel);border-radius:20px;padding:22px}
+    h1{font-size:clamp(30px,5vw,54px);margin:4px 0 12px;line-height:1.05}
+    h2{font-size:22px;margin:0 0 14px}
+    .kicker{color:var(--accent);font-weight:700}
+    .muted{color:var(--muted);line-height:1.7}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+    .grid4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+    .mini{background:var(--card)}
+    .section{margin-top:18px}
+    .tagrow{display:flex;flex-wrap:wrap;gap:9px}
+    .tag{border:1px solid var(--line);padding:9px 12px;border-radius:999px;background:#111a30}
+    .phase{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+    .label{font-weight:700;margin-bottom:6px}
+    ul{padding-left:20px} li{margin:7px 0;color:var(--muted)}
+    .footer{text-align:center;color:var(--muted);margin-top:28px;font-size:14px}
+    @media(max-width:760px){.grid,.grid4,.phase{grid-template-columns:1fr}.wrap{padding:16px 12px 40px}}
+  </style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="kicker">PERSONAL FINANCE APP</div>
+    <h1>จัดการเงินทั้งหมดในที่เดียว</h1>
+    <p class="muted">แอปการเงินส่วนบุคคลที่เริ่มจากรายรับ–รายจ่ายแบบง่าย ๆ และต่อยอดไปสู่การออม การลงทุน งบประมาณ หนี้ และการวางแผนทางการเงิน</p>
+  </section>
+
+  <section class="section grid4">
+    <div class="card mini"><div class="label">💵 รายรับ</div><div class="muted">เงินเดือน งานเสริม ขายของ และรายได้อื่น ๆ</div></div>
+    <div class="card mini"><div class="label">🧾 รายจ่าย</div><div class="muted">ค่าใช้จ่ายประจำ รายวัน และหมวดที่ผู้ใช้สร้างเอง</div></div>
+    <div class="card mini"><div class="label">🎯 เงินออม</div><div class="muted">เป้าหมายออม เงินฉุกเฉิน ซื้อคอม โทรศัพท์ และท่องเที่ยว</div></div>
+    <div class="card mini"><div class="label">📈 การลงทุน</div><div class="muted">หุ้น กองทุน คริปโต ทอง อสังหา และทรัพย์สินอื่น</div></div>
+  </section>
+
+  <section class="section card">
+    <h2>ฟีเจอร์หลัก</h2>
+    <div class="grid">
+      <div><div class="label">📊 Dashboard</div><div class="muted">ยอดคงเหลือ รายรับ รายจ่าย เงินออม การลงทุน และภาพรวมสุทธิ</div></div>
+      <div><div class="label">🏦 หลายบัญชี</div><div class="muted">เงินสด ธนาคาร Wallet บัตรเครดิต และบัญชีอื่น ๆ</div></div>
+      <div><div class="label">🔄 โอนเงิน</div><div class="muted">ย้ายเงินระหว่างบัญชีโดยไม่ถูกนับเป็นรายจ่าย</div></div>
+      <div><div class="label">🗂️ หมวดหมู่</div><div class="muted">เพิ่ม แก้ไข ซ่อน จัดลำดับ และสร้างหมวดย่อยเองได้</div></div>
+      <div><div class="label">🔁 รายการประจำ</div><div class="muted">เงินเดือน ค่าเช่า ค่าน้ำ ค่าไฟ อินเทอร์เน็ต และรายการซ้ำ</div></div>
+      <div><div class="label">📅 ปฏิทินการเงิน</div><div class="muted">วันเงินเข้า บิล หนี้ วันครบกำหนด และการแจ้งเตือน</div></div>
+    </div>
+  </section>
+
+  <section class="section grid">
+    <div class="card"><h2>💸 Budget & Alerts</h2><ul><li>ตั้งวงเงินรายวัน รายสัปดาห์ หรือรายเดือน</li><li>ตั้งงบแยกตามหมวด</li><li>เตือนเมื่อใช้ถึงระดับ เช่น 80%</li><li>เกินงบแล้วแสดงสถานะเตือน แต่ยังบันทึกได้</li></ul></div>
+    <div class="card"><h2>🎯 เป้าหมายการออม</h2><ul><li>ซื้อโทรศัพท์ / ซื้อคอม</li><li>ท่องเที่ยว</li><li>เงินฉุกเฉิน</li><li>ค่ารักษาพยาบาล</li><li>สร้างเป้าหมายเอง พร้อมเปอร์เซ็นต์ความคืบหน้า</li></ul></div>
+  </section>
+
+  <section class="section card">
+    <h2>🤝 ลูกหนี้และเจ้าหนี้</h2>
+    <div class="grid">
+      <div class="card mini"><div class="label">ลูกหนี้ — คนอื่นยืมเงินเรา</div><div class="muted">ชื่อผู้ยืม จำนวนเงิน วันครบกำหนด เตือนล่วงหน้า คืนบางส่วน และสถานะค้างชำระ</div></div>
+      <div class="card mini"><div class="label">เจ้าหนี้ — เรายืมเงินคนอื่น</div><div class="muted">บันทึกว่าเป็นหนี้ใคร จำนวนเท่าไร ต้องคืนเมื่อไร ชำระบางส่วน และแจ้งเตือนก่อนครบกำหนด</div></div>
+    </div>
+  </section>
+
+  <section class="section card">
+    <h2>📈 รายงานและการวิเคราะห์</h2>
+    <div class="tagrow"><span class="tag">รายวัน</span><span class="tag">รายเดือน</span><span class="tag">รายปี</span><span class="tag">แยกตามหมวด</span><span class="tag">รายรับเทียบรายจ่าย</span><span class="tag">อัตราการออม</span><span class="tag">พฤติกรรมการใช้เงิน</span></div>
+  </section>
+
+  <section class="section card">
+    <h2>ฟีเจอร์เสริมในอนาคต</h2>
+    <div class="tagrow"><span class="tag">หลายสกุลเงิน</span><span class="tag">Cloud Sync</span><span class="tag">Backup / Restore</span><span class="tag">Export CSV / Excel</span><span class="tag">แนบรูปใบเสร็จ</span><span class="tag">Quick Add</span><span class="tag">PIN / Biometrics</span><span class="tag">Dark Mode</span></div>
+  </section>
+
+  <section class="section card">
+    <h2>Roadmap</h2>
+    <div class="phase">
+      <div class="card mini"><div class="label">Phase 1</div><div class="muted">รายรับ รายจ่าย บัญชี หมวดหมู่ Dashboard และประวัติ</div></div>
+      <div class="card mini"><div class="label">Phase 2</div><div class="muted">Budget เป้าหมายออม รายการประจำ ปฏิทิน และแจ้งเตือน</div></div>
+      <div class="card mini"><div class="label">Phase 3</div><div class="muted">ลงทุน ลูกหนี้ เจ้าหนี้ Cloud Sync และรายงานขั้นสูง</div></div>
+    </div>
+  </section>
+  <div class="footer">Personal Finance App concept</div>
+</main>
+</body>
+</html>
